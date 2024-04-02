@@ -1,14 +1,14 @@
 # gin-cache
-[![Release](https://img.shields.io/github/release/chenyahui/gin-cache.svg?style=flat-square)](https://github.com/chenyahui/gin-cache/releases)
-[![doc](https://img.shields.io/badge/go.dev-doc-007d9c?style=flat-square&logo=read-the-docs)](https://pkg.go.dev/github.com/chenyahui/gin-cache)
-[![goreportcard for gin-cache](https://goreportcard.com/badge/github.com/chenyahui/gin-cache)](https://goreportcard.com/report/github.com/chenyahui/gin-cache)
+
+[![Release](https://img.shields.io/github/release/forhsd/gin-cache.svg?style=flat-square)](https://github.com/forhsd/gin-cache/releases)
+[![doc](https://img.shields.io/badge/go.dev-doc-007d9c?style=flat-square&logo=read-the-docs)](https://pkg.go.dev/github.com/forhsd/gin-cache)
+[![goreportcard for gin-cache](https://goreportcard.com/badge/github.com/forhsd/gin-cache)](https://goreportcard.com/report/github.com/forhsd/gin-cache)
 ![](https://img.shields.io/badge/license-MIT-green)
-[![codecov](https://codecov.io/gh/chenyahui/gin-cache/branch/main/graph/badge.svg?token=MX8Z4D5RZS)](https://codecov.io/gh/chenyahui/gin-cache)
+[![codecov](https://codecov.io/gh/forhsd/gin-cache/branch/main/graph/badge.svg?token=MX8Z4D5RZS)](https://codecov.io/gh/forhsd/gin-cache)
 
 English | [🇨🇳中文](README_ZH.md)
 
 A high performance gin middleware to cache http response. Compared to gin-contrib/cache. It has a huge performance improvement.
-
 
 # Feature
 
@@ -22,7 +22,7 @@ A high performance gin middleware to cache http response. Compared to gin-contri
 
 ## Install
 ```
-go get -u github.com/chenyahui/gin-cache
+go get -u github.com/forhsd/gin-cache
 ```
 
 ## Example
@@ -35,8 +35,8 @@ package main
 import (
 	"time"
 
-	"github.com/chenyahui/gin-cache"
-	"github.com/chenyahui/gin-cache/persist"
+	"github.com/forhsd/gin-cache"
+	"github.com/forhsd/gin-cache/persist"
 	"github.com/gin-gonic/gin"
 )
 
@@ -66,8 +66,8 @@ package main
 import (
 	"time"
 
-	"github.com/chenyahui/gin-cache"
-	"github.com/chenyahui/gin-cache/persist"
+	"github.com/forhsd/gin-cache"
+	"github.com/forhsd/gin-cache/persist"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
 )
