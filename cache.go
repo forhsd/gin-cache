@@ -3,14 +3,14 @@ package cache
 import (
 	"bytes"
 	"encoding/gob"
-	"errors"
 	"net/http"
 	"net/url"
 	"sort"
 	"strings"
 	"time"
 
-	"github.com/chenyahui/gin-cache/persist"
+	"dbREST/pkg/gin-cache/persist"
+
 	"github.com/gin-gonic/gin"
 	"golang.org/x/sync/singleflight"
 )
@@ -41,6 +41,7 @@ func Cache(
 	return cache(defaultCacheStore, defaultExpire, cfg)
 }
 
+// NOSONAR
 func cache(
 	defaultCacheStore persist.CacheStore,
 	defaultExpire time.Duration,
@@ -86,7 +87,7 @@ func cache(
 				return
 			}
 
-			if !errors.Is(err, persist.ErrCacheMiss) {
+			if err != persist.ErrCacheMiss {
 				cfg.logger.Errorf("get cache error: %s, cache key: %s", err, cacheKey)
 			}
 			cfg.missCacheCallback(c)

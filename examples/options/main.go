@@ -5,8 +5,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	cache "github.com/chenyahui/gin-cache"
-	"github.com/chenyahui/gin-cache/persist"
+	cache "dbREST/pkg/gin-cache"
+	"dbREST/pkg/gin-cache/persist"
+
 	"github.com/gin-gonic/gin"
 )
 

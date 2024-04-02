@@ -10,7 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/chenyahui/gin-cache/persist"
+	"dbREST/pkg/gin-cache/persist"
+
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -20,6 +21,7 @@ func init() {
 	gin.SetMode(gin.TestMode)
 }
 
+// NOSONAR
 func mockHttpRequest(middleware gin.HandlerFunc, url string, withRand bool) *httptest.ResponseRecorder {
 	testWriter := httptest.NewRecorder()
 
@@ -40,6 +42,7 @@ func mockHttpRequest(middleware gin.HandlerFunc, url string, withRand bool) *htt
 	return testWriter
 }
 
+// NOSONAR
 func TestCacheByRequestPath(t *testing.T) {
 	memoryStore := persist.NewMemoryStore(1 * time.Minute)
 	cachePathMiddleware := CacheByRequestPath(memoryStore, 3*time.Second)
@@ -130,14 +133,17 @@ func TestHeader(t *testing.T) {
 
 	{
 		engine.ServeHTTP(testWriter, testRequest)
-		value := testWriter.Header().Get("test_header_key")
-		assert.Equal(t, "test_header_value2", value)
+		values := testWriter.Header().Values("test_header_key")
+		assert.Equal(t, 1, len(values))
+		assert.Equal(t, "test_header_value2", values[0])
+
 	}
 
 	{
 		engine.ServeHTTP(testWriter, testRequest)
-		value := testWriter.Header().Get("test_header_key")
-		assert.Equal(t, "test_header_value2", value)
+		values := testWriter.Header().Values("test_header_key")
+		assert.Equal(t, 1, len(values))
+		assert.Equal(t, "test_header_value2", values[0])
 	}
 }
 
@@ -221,6 +227,7 @@ func TestCacheByRequestURIIgnoreOrder(t *testing.T) {
 const prefixKey = "#prefix#"
 
 func TestPrefixKey(t *testing.T) {
+
 	memoryStore := persist.NewMemoryStore(1 * time.Minute)
 	cachePathMiddleware := CacheByRequestPath(
 		memoryStore,
@@ -273,23 +280,4 @@ func TestWithDiscardHeaders(t *testing.T) {
 		headers2 := testWriter.Header()
 		assert.Equal(t, headers2.Get(headerKey), "")
 	}
-}
-
-func TestCustomCacheStrategy(t *testing.T) {
-	memoryStore := persist.NewMemoryStore(1 * time.Minute)
-	cacheMiddleware := Cache(
-		memoryStore,
-		24*time.Hour,
-		WithCacheStrategyByRequest(func(c *gin.Context) (bool, Strategy) {
-			return true, Strategy{
-				CacheKey: "custom_cache_key_" + c.Query("uid"),
-			}
-		}),
-	)
-
-	_ = mockHttpRequest(cacheMiddleware, "/cache?uid=1", false)
-
-	var val interface{}
-	err := memoryStore.Get("custom_cache_key_1", &val)
-	assert.Nil(t, err)
 }

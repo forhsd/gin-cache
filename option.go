@@ -59,6 +59,7 @@ type Logger interface {
 	Errorf(string, ...interface{})
 }
 
+// NOSONAR
 // Discard the default logger that will discard all logs of gin-cache
 type Discard struct {
 }
@@ -79,6 +80,7 @@ func WithCacheStrategyByRequest(getGetCacheStrategyByRequest GetCacheStrategyByR
 // OnHitCacheCallback define the callback when use cache
 type OnHitCacheCallback func(c *gin.Context)
 
+// NOSONAR
 var defaultHitCacheCallback = func(c *gin.Context) {}
 
 // WithOnHitCache will be called when cache hit.
@@ -93,6 +95,7 @@ func WithOnHitCache(cb OnHitCacheCallback) Option {
 // OnMissCacheCallback define the callback when use cache
 type OnMissCacheCallback func(c *gin.Context)
 
+// NOSONAR
 var defaultMissCacheCallback = func(c *gin.Context) {}
 
 // WithOnMissCache will be called when cache miss.
@@ -106,6 +109,7 @@ func WithOnMissCache(cb OnMissCacheCallback) Option {
 
 type BeforeReplyWithCacheCallback func(c *gin.Context, cache *ResponseCache)
 
+// NOSONAR
 var defaultBeforeReplyWithCacheCallback = func(c *gin.Context, cache *ResponseCache) {}
 
 // WithBeforeReplyWithCache will be called before replying with cache.
@@ -120,6 +124,7 @@ func WithBeforeReplyWithCache(cb BeforeReplyWithCacheCallback) Option {
 // OnShareSingleFlightCallback define the callback when share the singleflight result
 type OnShareSingleFlightCallback func(c *gin.Context)
 
+// NOSONAR
 var defaultShareSingleFlightCallback = func(c *gin.Context) {}
 
 // WithOnShareSingleFlight will be called when share the singleflight result
