@@ -3,9 +3,9 @@ package main
 import (
 	"time"
 
-	cache "dbREST/pkg/gin-cache"
+	cache "github.com/forhsd/gin-cache"
 
-	"dbREST/pkg/gin-cache/persist"
+	"github.com/forhsd/gin-cache/persist"
 
 	"github.com/gin-gonic/gin"
 	redis "github.com/redis/go-redis/v9"

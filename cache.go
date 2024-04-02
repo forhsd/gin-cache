@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"dbREST/pkg/gin-cache/persist"
+	"github.com/forhsd/gin-cache/persist"
 
 	"github.com/gin-gonic/gin"
 	"golang.org/x/sync/singleflight"

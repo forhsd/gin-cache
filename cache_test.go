@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"dbREST/pkg/gin-cache/persist"
+	"github.com/forhsd/gin-cache/persist"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
